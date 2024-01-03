@@ -28,8 +28,8 @@ console.log(selectedCard?.imageUrl)
       <Image 
         src={selectedCard.imageUrl} 
         alt={selectedCard.displayText} 
-        width={500} 
-        height={300} 
+        width={300} 
+        height={500} 
       />
     )}
    </div>
