@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Card, tarotCards } from '../../../public/cards_data/cards_array';
+import { Card, tarotCards } from '../cards_array';
+import Image from 'next/image';
 
 const CardSelector: React.FC = () => {
  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
@@ -12,7 +13,7 @@ const CardSelector: React.FC = () => {
    setSelectedCard(null);
    }
  };
-
+console.log(selectedCard?.imageUrl)
  return (
  
    <div>
@@ -23,7 +24,14 @@ const CardSelector: React.FC = () => {
        ))}
      </select>
 
-     {selectedCard && <img src={selectedCard.imageUrl} alt={selectedCard.displayText} />}
+     {selectedCard && (
+      <Image 
+        src={selectedCard.imageUrl} 
+        alt={selectedCard.displayText} 
+        width={500} 
+        height={300} 
+      />
+    )}
    </div>
 
 
