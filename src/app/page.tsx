@@ -6,11 +6,13 @@ import { almendra } from  '@/app/ui/fonts';
 
 export default function Home() {
   return (
+    <Provider>
     <div>
       <div className={almendra.className}>
         <h1>Morning Tarot</h1>
         <DropDownButton/>
       </div>
     </div>
+    </Provider>
   )
 }
