@@ -3,10 +3,12 @@
 import Image from 'next/image'
 import DropDownButton from '../app/ui/DropDownButton'
 import { almendra } from  '@/app/ui/fonts';
+import { Provider } from 'react-redux'; 
+import store from '../store'
 
-export default function Home() {
+export default function Page() {
   return (
-    <Provider>
+    <Provider store={store}>
     <div>
       <div className={almendra.className}>
         <h1>Morning Tarot</h1>
