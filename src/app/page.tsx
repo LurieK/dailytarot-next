@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import styles from './page.module.css'
 import DropDownButton from '../app/ui/DropDownButton'
 import { almendra } from  '@/app/ui/fonts';
 

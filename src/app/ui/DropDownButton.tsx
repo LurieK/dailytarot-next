@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+
+
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCard } from '../../cardSlice';
+import { RootState } from './store';
 import { Card, tarotCards } from '../cards_array';
 import Image from 'next/image';
 
-const CardSelector: React.FC = () => {
- const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+const DropDownButton: React.FC = () => {
+ const dispatch = useDispatch();
+ const card = useSelector((state: RootState) => state.card.card);
 
  const handleChoice = (e: React.ChangeEvent<HTMLSelectElement>) => {
-   const card = tarotCards.find(card => card.value === e.target.value);
-   if (card){
-    setSelectedCard(card)
+   const selectedCard = tarotCards.find(card => card.value === e.target.value);
+   if (selectedCard){
+    dispatch(setCard(selectedCard));
    }else{
-   setSelectedCard(null);
+    dispatch(setCard(null));
    }
  };
-console.log(selectedCard?.imageUrl)
+
+ console.log(card?.imageUrl)
  return (
- 
    <div>
      <select onChange={handleChoice}>
        <option value="">Select a Card</option>
@@ -24,18 +30,16 @@ console.log(selectedCard?.imageUrl)
        ))}
      </select>
 
-     {selectedCard && (
+     {card && (
       <Image 
-        src={selectedCard.imageUrl} 
-        alt={selectedCard.displayText} 
+        src={card.imageUrl} 
+        alt={card.displayText} 
         width={300} 
         height={500} 
       />
     )}
    </div>
-
-
  );
 };
 
-export default CardSelector;
+export default DropDownButton;
